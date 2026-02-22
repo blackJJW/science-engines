@@ -1,0 +1,26 @@
+# --- Rust / Cargo ---
+/target/
+/**/target/
+Cargo.lock
+
+# Rust tooling
+**/*.rs.bk
+
+# --- OS / Editor ---
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# --- Python (optional, for docs/tools later) ---
+__pycache__/
+*.pyc
+.venv/
+.env
+.pytest_cache/
+
+# --- Logs / Temp ---
+*.log
+tmp/
+temp/

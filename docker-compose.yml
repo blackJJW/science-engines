@@ -17,7 +17,7 @@ services:
       - cargo_git:/home/dev/.cargo/git
       - rustup:/home/dev/.rustup
       # Optional: persist target dir to avoid rebuilds
-      - target_cache:/workspace/target
+      - target_cache:/home/dev/target
     tty: true
     stdin_open: true
 
