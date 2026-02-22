@@ -1,0 +1,15 @@
+# Enforces LF for all text files
+* text=auto eol=lf
+
+# Treat common binary files as binary (no text conversions / no merges)
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.pdf binary
+*.zip binary
+*.gz binary
+*.tar binary
+*.7z binary
