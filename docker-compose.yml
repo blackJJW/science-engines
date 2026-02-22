@@ -1,0 +1,28 @@
+services:
+  dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        USERNAME: dev
+        USER_UID: 1001
+        USER_GID: 1001
+        RUST_TOOLCHAIN: stable
+    image: science-engines-dev:latest
+    working_dir: /workspace
+    volumes:
+      - .:/workspace
+      # Persist cargo caches (huge speedup)
+      - cargo_registry:/home/dev/.cargo/registry
+      - cargo_git:/home/dev/.cargo/git
+      - rustup:/home/dev/.rustup
+      # Optional: persist target dir to avoid rebuilds
+      - target_cache:/workspace/target
+    tty: true
+    stdin_open: true
+
+volumes:
+  cargo_registry:
+  cargo_git:
+  rustup:
+  target_cache:
