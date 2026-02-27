@@ -22,7 +22,7 @@ pub fn simulate<M: OdeModel, I: Integrator>(
     let mut t = t0;
     let mut x = x0.to_vec();
 
-    let mut results = Vec::with_capacity(steps + 1);
+    let mut out = Vec::with_capacity(steps + 1);
 
     // store initial state
     out.push((t, x.clone()));

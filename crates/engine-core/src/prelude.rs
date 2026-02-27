@@ -7,7 +7,7 @@ pub use crate::engine::{
 
 // ODE public API
 pub use crate::ode::{
-    integrators::Integrator,
+    integrator::Integrator,
     model::OdeModel,
     rk4::Rk4,
     scratch::Scratch,
