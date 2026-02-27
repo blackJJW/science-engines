@@ -2,7 +2,7 @@ use crate::ode::model::OdeModel;
 
 /*
 Harmonic oscillator (spring):
-x'' + w^2 x = 0
+x'' + w^2 * x = 0
 
 State:
 x[0] = position
