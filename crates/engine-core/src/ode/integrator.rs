@@ -1,8 +1,8 @@
 use super::{model::OdeModel, scratch::Scratch};
 
 /*
-Integrator: A algorithm for proceeding (t, x) -> (t+dt, x_new) with a dt
-- step(): Update x from in-place 
+Integrator: An algorithm that advances (t, x) -> (t+dt, x_new) by a time step dt.
+- step(): Updates x in place 
 */
 pub trait Integrator {
     fn step<M: OdeModel>(

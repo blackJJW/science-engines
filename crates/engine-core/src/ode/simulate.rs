@@ -2,8 +2,8 @@ use super::{integrator::Integrator, model::OdeModel, scratch::Scratch};
 
 /*
 simulate():
-- Integrates the steps times starting from (t0, x0)
-- Returns Vec as results
+- Integrates for 'steps' steps starting from (t0, x0).
+- Returns the trajectory as a Vec of results.
 */
 pub fn simulate<M: OdeModel, I: Integrator>(
     model: &M,

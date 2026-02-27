@@ -2,7 +2,7 @@ use super::{integrator::Integrator, model::OdeModel, scratch::Scratch};
 
 /*
 RK4: (Runge-Kutta 4th order)
-- It is commonly used for a first integrator becuase it has good accuracy and stability.
+- Commonly used as a first integrator because it provies good accuracy and stability.
 */
 #[derive(Debug, Clone, Copy, Default)]
 pub struct Rk4;

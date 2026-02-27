@@ -1,6 +1,6 @@
 /*
-Scratch: Temporary buffers for using repeatedly in the Integrator
-- This is better for performance/real-time because it doesn't make new Vec per step.
+Scratch: Temporary buffers reused by the integrator.
+- Improves performance and real-time behavior by avoiding new Vec allocations each step.
 */
 #[derive(Debug, Clone)]
 pub struct Scratch {

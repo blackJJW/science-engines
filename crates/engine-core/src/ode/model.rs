@@ -1,7 +1,7 @@
 /*
 OdeModel: dx/dt = f(t, x)
-- dim(): Length of state vector x
-- deriv(): Write the dx/dt given (t, x) on a buffer (mimimize allocations)
+- dim(): Return the length of the state vector x.
+- deriv(): Writes dx/dt for the given (t, x) into an output buffer (to mimimize allocations).
 */
 pub trait OdeModel {
     fn dim(&self) -> usize;
