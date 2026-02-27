@@ -17,7 +17,7 @@ fn engine_rejects_nonpositive_dt() {
     let err = eng.step(&EngineInput { dt: 0.0 }).unwrap_err();
 
     match err {
-        EngineError::InvalidDt(dt) => { /* expected*/ }
+        EngineError::InvalidDt(_) => { /* expected*/ }
         _ => panic!("unexpected error: {err:?}"),
     }
 }

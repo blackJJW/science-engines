@@ -4,14 +4,14 @@ use engine_core::prelude::*;
 Logistic analytic solution:
 y(t) = K / (1 + ((K - y0) / y0) * exp(-r * t))
 */
-fn logistic_analytic(r: f64, k: f64, y0: f64, t: f64) -> {
+fn logistic_analytic(r: f64, k: f64, y0: f64, t: f64) -> f64 {
     let a = (k - y0) / y0;
     k / (1.0 + a * (-r * t).exp())
 }
 
 #[test]
 fn rk4_logistic_matches_analytic_reasonably() {
-    let model = Logistic { r: 1.2, k: 10.0 }
+    let model = Logistic { r: 1.2, k: 10.0 };
     let integrator = Rk4;
 
     let t0 = 0.0;
