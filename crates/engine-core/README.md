@@ -15,7 +15,10 @@ Current focus:
 
 We represent a dynamical system as:
 
-- **State vector**: \( x(t) \in \mathbb{R}^n \)
+- **State vector**:
+  $$
+  x(t) \in \mathbb{R}^n
+  $$
 - **ODE**:  
   $$
   \frac{dx}{dt} = f(t, x)
@@ -23,8 +26,8 @@ We represent a dynamical system as:
 
 In code, this corresponds to the `OdeModel` trait:
 
-- `dim()` returns \( n \)
-- `deriv(t, x, out)` writes \( f(t, x) \) into `out` (to minimize allocations)
+- `dim()` returns $$ n $$
+- `deriv(t, x, out)` writes $$ f(t, x) $$ into `out` (to minimize allocations)
 
 ---
 
@@ -46,7 +49,7 @@ In code, this is the `Integrator` trait:
 
 ## 3) RK4 (Runge–Kutta 4th Order)
 
-RK4 advances \(x\) using four slope evaluations:
+RK4 advances $$x$$ using four slope evaluations:
 
 $$
 k_1 = f(t, x)
@@ -92,7 +95,7 @@ $$
 
 State:
 
-- \( x = [y] \)
+- $$ x = [y] $$
 
 ---
 
@@ -106,8 +109,8 @@ $$
 
 Converted to first-order system with state:
 
-- \( x_0 = \text{position} \)
-- \( x_1 = \text{velocity} \)
+- $$ x_0 = \text{position} $$
+- $$ x_1 = \text{velocity} $$
 
 ODE:
 
@@ -134,7 +137,7 @@ $$
 E = \frac{1}{2}v^2 + \frac{1}{2}\omega^2 x^2
 $$
 
-In an ideal system, \(E\) should remain constant.
+In an ideal system, $$E$$ should remain constant.
 
 We use an energy drift test as an invariant-based validation:
 
