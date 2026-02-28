@@ -17,9 +17,9 @@ We represent a dynamical system as:
 
 - **State vector**: \( x(t) \in \mathbb{R}^n \)
 - **ODE**:  
-  \[
+  $$
   \frac{dx}{dt} = f(t, x)
-  \]
+  $$
 
 In code, this corresponds to the `OdeModel` trait:
 
@@ -32,9 +32,9 @@ In code, this corresponds to the `OdeModel` trait:
 
 An integrator advances one step:
 
-\[
+$$
 (t, x) \rightarrow (t + dt, x_{\text{new}})
-\]
+$$
 
 In code, this is the `Integrator` trait:
 
@@ -48,24 +48,24 @@ In code, this is the `Integrator` trait:
 
 RK4 advances \(x\) using four slope evaluations:
 
-\[
+$$
 k_1 = f(t, x)
-\]
-\[
+$$
+$$
 k_2 = f\left(t + \frac{dt}{2}, x + \frac{dt}{2}k_1\right)
-\]
-\[
+$$
+$$
 k_3 = f\left(t + \frac{dt}{2}, x + \frac{dt}{2}k_2\right)
-\]
-\[
+$$
+$$
 k_4 = f\left(t + dt, x + dtk_3\right)
-\]
+$$
 
 Then update:
 
-\[
+$$
 x_{\text{new}} = x + \frac{dt}{6}(k_1 + 2k_2 + 2k_3 + k_4)
-\]
+$$
 
 Notes:
 
@@ -80,15 +80,15 @@ Notes:
 
 ODE:
 
-\[
+$$
 \frac{dy}{dt} = r y \left(1 - \frac{y}{K}\right)
-\]
+$$
 
 Analytic solution (used for test validation):
 
-\[
+$$
 y(t) = \frac{K}{1 + \left(\frac{K - y_0}{y_0}\right)e^{-rt}}
-\]
+$$
 
 State:
 
@@ -100,9 +100,9 @@ State:
 
 Second-order equation:
 
-\[
+$$
 x'' + \omega^2 x = 0
-\]
+$$
 
 Converted to first-order system with state:
 
@@ -111,7 +111,7 @@ Converted to first-order system with state:
 
 ODE:
 
-\[
+$$
 \frac{d}{dt}
 \begin{bmatrix}
 x_0 \\
@@ -122,7 +122,7 @@ x_1
 x_1 \\
 -\omega^2 x_0
 \end{bmatrix}
-\]
+$$
 
 ---
 
@@ -130,9 +130,9 @@ x_1 \\
 
 For the harmonic oscillator, total energy is:
 
-\[
+$$
 E = \frac{1}{2}v^2 + \frac{1}{2}\omega^2 x^2
-\]
+$$
 
 In an ideal system, \(E\) should remain constant.
 
