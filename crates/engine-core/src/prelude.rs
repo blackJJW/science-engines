@@ -12,6 +12,7 @@ pub use crate::ode::{
     rk4::Rk4,
     scratch::Scratch,
     simulate::simulate,
+    symplectic_euler::SymplecticEuler,
 };
 
 // Example models
