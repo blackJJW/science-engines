@@ -16,18 +16,21 @@ Current focus:
 We represent a dynamical system as:
 
 - **State vector**:
-  $$
-  x(t) \in \mathbb{R}^n
-  $$
-- **ODE**:  
-  $$
-  \frac{dx}{dt} = f(t, x)
-  $$
+
+$$
+x(t) \in \mathbb{R}^n
+$$
+
+- **ODE**:
+
+$$
+\frac{dx}{dt} = f(t, x)
+$$
 
 In code, this corresponds to the `OdeModel` trait:
 
-- `dim()` returns $$ n $$
-- `deriv(t, x, out)` writes $$ f(t, x) $$ into `out` (to minimize allocations)
+- `dim()` returns $ n $
+- `deriv(t, x, out)` writes $ f(t, x) $ into `out` (to minimize allocations)
 
 ---
 
@@ -95,7 +98,7 @@ $$
 
 State:
 
-- $$ x = [y] $$
+- $ x = [y] $
 
 ---
 
@@ -109,8 +112,8 @@ $$
 
 Converted to first-order system with state:
 
-- $$ x_0 = \text{position} $$
-- $$ x_1 = \text{velocity} $$
+- $ x_0 = \text{position} $
+- $ x_1 = \text{velocity} $
 
 ODE:
 
