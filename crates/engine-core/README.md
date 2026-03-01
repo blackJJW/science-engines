@@ -119,15 +119,15 @@ ODE:
 
 $$
 \frac{d}{dt}
-\begin{bmatrix}
+\begin{pmatrix}
 x_0 \\
 x_1
-\end{bmatrix}
+\end{pmatrix}
 =
-\begin{bmatrix}
+\begin{pmatrix}
 x_1 \\
 -\omega^2 x_0
-\end{bmatrix}
+\end{pmatrix}
 $$
 
 ---
