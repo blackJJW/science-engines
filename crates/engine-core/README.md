@@ -118,9 +118,9 @@ Converted to first-order system with state:
 ODE:
 
 $$
-\frac{d}{dt}\left[\begin{array}{c}x_0\\x_1\end{array}\right]
+\frac{d}{dt}\begin{pmatrix}x_0\\x_1\end{pmatrix}
 =
-\left[\begin{array}{c}x_1\\-\omega^2 x_0\end{array}\right]
+\begin{pmatrix}x_1\\-\omega^2 x_0\end{pmatrix}
 $$
 
 ---
