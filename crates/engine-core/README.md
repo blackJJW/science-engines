@@ -118,9 +118,10 @@ Converted to first-order system with state:
 ODE:
 
 $$
-\frac{d}{dt}\begin{pmatrix}x_0\\x_1\end{pmatrix}
-=
-\begin{pmatrix}x_1\\-\omega^2 x_0\end{pmatrix}
+\begin{aligned}
+\dot{x}_0 &= x_1 \\
+\dot{x}_1 &= -\omega^2 x_0
+\end{aligned}
 $$
 
 ---
