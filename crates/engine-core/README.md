@@ -52,7 +52,7 @@ In code, this is the `Integrator` trait:
 
 ## 3) RK4 (Runge–Kutta 4th Order)
 
-RK4 advances $$x$$ using four slope evaluations:
+RK4 advances $x$ using four slope evaluations:
 
 $$
 k_1 = f(t, x)
@@ -118,20 +118,9 @@ Converted to first-order system with state:
 ODE:
 
 $$
-\frac{d}{dt}
-\left[
-\begin{array}{c}
-x_0 \\
-x_1
-\end{array}
-\right]
+\frac{d}{dt}\left[\begin{array}{c}x_0\\x_1\end{array}\right]
 =
-\left[
-\begin{array}{c}
-x_1 \\
--\omega^2 x_0
-\end{array}
-\right]
+\left[\begin{array}{c}x_1\\-\omega^2 x_0\end{array}\right]
 $$
 
 ---
