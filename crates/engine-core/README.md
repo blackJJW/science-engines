@@ -119,15 +119,19 @@ ODE:
 
 $$
 \frac{d}{dt}
-\begin{pmatrix}
+\left[
+\begin{array}{c}
 x_0 \\
 x_1
-\end{pmatrix}
+\end{array}
+\right]
 =
-\begin{pmatrix}
+\left[
+\begin{array}{c}
 x_1 \\
 -\omega^2 x_0
-\end{pmatrix}
+\end{array}
+\right]
 $$
 
 ---
