@@ -6,6 +6,7 @@ Current focus:
 
 - ODE (ordinary differential equation) interface
 - RK4 integrator
+- Symplectic integrators (Symplectic Euler, Velocity Verlet)
 - Harmonic oscillator + logistic growth example models
 - Validation via analytic solutions and invariants (energy)
 
@@ -77,6 +78,46 @@ Notes:
 
 - RK4 has good accuracy and stability for many problems.
 - RK4 is **not symplectic**, so energy may drift over long simulations for Hamiltonian systems.
+- For very small $dt$, RK4 can have very low absolute error, but long-term energy behavior is not guaranteed.
+
+---
+
+## 3.1) Symplectic Integrators (for oscillator-style systems)
+
+For many physics systems (e.g., spring/oscillator), we often use a state
+$x=[x, v]$ where $x$ is position and $v$ is velocity.
+
+### Symplectic (Semi-Implicit) Euler
+
+Update rule (velocity first, then position):
+
+$$
+\begin{aligned}
+v_{n+1} &= v_n + a(x_n)\,dt \\
+x_{n+1} &= x_n + v_{n+1}\,dt
+\end{aligned}
+$$
+
+This method is **symplectic** for position/velocity systems and often keeps
+energy behavior more stable than standard Euler.
+
+### Velocity Verlet
+
+Update rule:
+
+$$
+\begin{aligned}
+x_{n+1} &= x_n + v_n\,dt + \tfrac{1}{2}a_n\,dt^2 \\
+v_{n+1} &= v_n + \tfrac{1}{2}(a_n + a_{n+1})\,dt
+\end{aligned}
+$$
+
+where $a_n = a(x_n)$ and $a_{n+1} = a(x_{n+1})$.
+
+Notes:
+
+- Velocity Verlet is symplectic and typically provides good long-term stability for energy.
+- For very small $dt$, RK4 can still have very low absolute error due to its 4th-order accuracy.
 
 ---
 
@@ -148,4 +189,5 @@ We use an energy drift test as an invariant-based validation:
 - **Smoke tests** for `Engine` skeleton (`tests/engine_smoke.rs`)
 - **Logistic**: RK4 vs analytic solution (`tests/ode_logistic.rs`)
 - **Oscillator**: RK4 vs analytic solution (`tests/ode_oscillator.rs`)
-- **Energy**: invariant drift check (`tests/ode_energy.rs`)
+- **Energy (bounded range)**: energy stays bounded over a long run (symplectic behavior) (`tests/ode_energy.rs`)
+- **Energy (comparison)**: compare energy behavior across integrators (`tests/ode_energy_compare.rs`)
