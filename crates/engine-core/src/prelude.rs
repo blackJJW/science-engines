@@ -13,6 +13,7 @@ pub use crate::ode::{
     scratch::Scratch,
     simulate::simulate,
     symplectic_euler::SymplecticEuler,
+    velocity_verlet::VelocityVerlet,
 };
 
 // Example models
