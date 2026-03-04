@@ -26,8 +26,8 @@ We represent a dynamical system as:
 
 In code, this corresponds to the `OdeModel` trait:
 
-- `dim()` returns $$ n $$
-- `deriv(t, x, out)` writes $$ f(t, x) $$ into `out` (to minimize allocations)
+- `dim()` returns $n$
+- `deriv(t, x, out)` writes $f(t, x)$ into `out` (to minimize allocations)
 
 ---
 
@@ -49,7 +49,7 @@ In code, this is the `Integrator` trait:
 
 ## 3) RK4 (Runge–Kutta 4th Order)
 
-RK4 advances $$x$$ using four slope evaluations:
+RK4 advances $x$ using four slope evaluations:
 
 $$
 k_1 = f(t, x)
@@ -77,6 +77,44 @@ Notes:
 
 ---
 
+## 3.1) Symplectic Integrators (for oscillator-style systems)
+
+For many physics systems (e.g., spring/oscillator), we often use a state
+$x=[x_0, x_1]$ where $x_0$ is position and $x_1$ is velocity.
+
+### Symplectic (Semi-Implicit) Euler
+
+Update rule (velocity first, then position):
+
+$$
+\begin{aligned}
+v_{n+1} &= v_n + a(x_n)\,dt \\
+x_{n+1} &= x_n + v_{n+1}\,dt
+\end{aligned}
+$$
+
+This method is **symplectic** for position/velocity systems and often keeps
+energy behavior more stable than standard Euler.
+
+### Velocity Verlet
+
+Update rule:
+
+$$
+\begin{aligned}
+x_{n+1} &= x_n + v_n\,dt + \tfrac{1}{2}a_n\,dt^2 \\
+v_{n+1} &= v_n + \tfrac{1}{2}(a_n + a_{n+1})\,dt
+\end{aligned}
+$$
+
+where $a_n = a(x_n)$ and $a_{n+1} = a(x_{n+1})$.
+
+Notes:
+- Velocity Verlet is symplectic and typically provides good long-term stability for energy.
+- For very small $dt$, RK4 can still have very low absolute error due to its 4th-order accuracy.
+
+---
+
 ## 4) Example Models
 
 ### 4.1 Logistic Growth
@@ -95,7 +133,7 @@ $$
 
 State:
 
-- $$ x = [y] $$
+- $x=[y]$
 
 ---
 
@@ -109,22 +147,14 @@ $$
 
 Converted to first-order system with state:
 
-- $$ x_0 = \text{position} $$
-- $$ x_1 = \text{velocity} $$
-
-ODE:
+- $x_0=\text{position}$
+- $x_1=\text{velocity}$
 
 $$
-\frac{d}{dt}
-\begin{bmatrix}
-x_0 \\
-x_1
-\end{bmatrix}
-=
-\begin{bmatrix}
-x_1 \\
--\omega^2 x_0
-\end{bmatrix}
+\begin{aligned}
+\dot{x}_0 &= x_1 \\
+\dot{x}_1 &= -\omega^2 x_0
+\end{aligned}
 $$
 
 ---
@@ -137,7 +167,7 @@ $$
 E = \frac{1}{2}v^2 + \frac{1}{2}\omega^2 x^2
 $$
 
-In an ideal system, $$E$$ should remain constant.
+In an ideal system, $E$ should remain constant.
 
 We use an energy drift test as an invariant-based validation:
 
@@ -152,3 +182,5 @@ We use an energy drift test as an invariant-based validation:
 - **Logistic**: RK4 vs analytic solution (`tests/ode_logistic.rs`)
 - **Oscillator**: RK4 vs analytic solution (`tests/ode_oscillator.rs`)
 - **Energy**: invariant drift check (`tests/ode_energy.rs`)
+- **Energy (compare)**: Verlet vs RK4 energy behavior (`tests/ode_energy_compare.rs`)
+- **Energy (invariant)**: bounded energy range checks (`tests/ode_energy.rs`)
