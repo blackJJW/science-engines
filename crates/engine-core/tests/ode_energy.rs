@@ -15,14 +15,15 @@ fn rk4_oscillator_energy_is_almost_conserved() {
     let w = 2.0; // angular frequency
     let model = HarmonicOscillator { w };
     // let integrator = Rk4;
-    let integrator = SymplecticEuler;
+    // let integrator = SymplecticEuler;
+    let integrator = VelocityVerlet;
 
     let t0 = 0.0; 
     let x0 = 1.0;
     let v0 = 0.0;
 
     let dt = 0.001; // time step (smaller -> better energy behavior)
-    let steps = 10_000; //simulate long enough to see drift (t_end=50)
+    let steps = 50_000; //simulate long enough to see drift (t_end=50)
 
     let traj = simulate(&model, &integrator, t0, &[x0, v0], dt, steps); // run simulation
 
